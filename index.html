@@ -1,0 +1,2399 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校园反差大赛 | 官方网站 - 记录每一个意想不到的青春瞬间</title>
+  <meta name="description" content="校园反差大赛官方网站，一个专注于记录校园生活中反差瞬间的视频社区。发现创作者、分享真实故事、参与官方赛事，在这里看见青春的另一面。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230f172a'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23f59e0b' font-family='sans-serif' font-weight='bold'%3E↯%3C/text%3E%3C/svg%3E">
+  <style>
+    /* ===== 命名空间: cpc- (Campus Contrast Contest) ===== */
+    :root {
+      --cpc-bg: #0b1120;
+      --cpc-bg-soft: #111c33;
+      --cpc-bg-card: #152240;
+      --cpc-bg-card-hover: #1b2b4e;
+      --cpc-line: #263a5c;
+      --cpc-line-light: #334d74;
+      --cpc-text: #e8eef7;
+      --cpc-text-soft: #9fb0c8;
+      --cpc-text-dim: #6e819c;
+      --cpc-accent: #f59e0b;
+      --cpc-accent-soft: #fbbf24;
+      --cpc-accent-glow: rgba(245, 158, 11, 0.18);
+      --cpc-cyan: #22d3ee;
+      --cpc-cyan-soft: rgba(34, 211, 238, 0.15);
+      --cpc-violet: #a78bfa;
+      --cpc-violet-soft: rgba(167, 139, 250, 0.15);
+      --cpc-green: #34d399;
+      --cpc-radius: 14px;
+      --cpc-radius-sm: 8px;
+      --cpc-radius-lg: 22px;
+      --cpc-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+      --cpc-font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      --cpc-scroll-offset: 118px;
+      --cpc-header-h: 66px;
+      --cpc-announce-h: 40px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--cpc-scroll-offset); }
+
+    body {
+      font-family: var(--cpc-font);
+      background: var(--cpc-bg);
+      color: var(--cpc-text);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--cpc-accent); color: #0b1120; }
+
+    img, svg { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ===== 吸顶区域: 公告条 + 页头 ===== */
+    .cpc-sticky-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* 公告条 */
+    .cpc-announce-bar {
+      background: linear-gradient(90deg, #f59e0b, #f97316 60%, #fb923c);
+      color: #1a1206;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 9px 20px;
+      min-height: var(--cpc-announce-h);
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .cpc-announce-bar .cpc-announce-tag {
+      background: #0b1120;
+      color: #fbbf24;
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.12em;
+      flex-shrink: 0;
+    }
+    .cpc-announce-bar a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    /* 页头 */
+    .cpc-header {
+      background: rgba(11, 17, 32, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--cpc-line);
+      min-height: var(--cpc-header-h);
+    }
+    .cpc-header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      height: var(--cpc-header-h);
+    }
+    .cpc-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.03em;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .cpc-logo-mark {
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      display: grid; place-items: center;
+      color: #0b1120;
+      font-size: 20px;
+      font-weight: 900;
+      box-shadow: 0 0 0 1px rgba(245,158,11,0.4), 0 6px 18px rgba(245,158,11,0.3);
+    }
+    .cpc-logo-text small {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      color: var(--cpc-text-dim);
+      line-height: 1.2;
+    }
+
+    .cpc-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 6px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .cpc-nav::-webkit-scrollbar { display: none; }
+    .cpc-nav a {
+      font-size: 13.5px;
+      color: var(--cpc-text-soft);
+      padding: 7px 11px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: color .18s, background .18s;
+    }
+    .cpc-nav a:hover { color: var(--cpc-accent-soft); background: rgba(245,158,11,0.08); }
+
+    .cpc-header-tools {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cpc-search {
+      display: flex;
+      align-items: center;
+      background: var(--cpc-bg-soft);
+      border: 1px solid var(--cpc-line);
+      border-radius: 30px;
+      padding: 5px 6px 5px 14px;
+      transition: border-color .2s, box-shadow .2s;
+      position: relative;
+    }
+    .cpc-search:focus-within {
+      border-color: var(--cpc-accent);
+      box-shadow: 0 0 0 3px var(--cpc-accent-glow);
+    }
+    .cpc-search input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--cpc-text);
+      font-size: 13px;
+      width: 128px;
+      font-family: inherit;
+    }
+    .cpc-search input::placeholder { color: var(--cpc-text-dim); }
+    .cpc-search button {
+      background: var(--cpc-accent);
+      border: none;
+      color: #0b1120;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 15px;
+      transition: transform .15s;
+      flex-shrink: 0;
+    }
+    .cpc-search button:hover { transform: scale(1.08); }
+
+    .cpc-search-feedback {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line-light);
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 12.5px;
+      color: var(--cpc-accent-soft);
+      white-space: nowrap;
+      box-shadow: var(--cpc-shadow);
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity .2s, transform .2s;
+      z-index: 30;
+    }
+    .cpc-search-feedback.cpc-show {
+      opacity: 1;
+      transform: translateY(0);
+      animation: cpc-pop .3s ease;
+    }
+    @keyframes cpc-pop { 0% { transform: translateY(-6px) scale(.96); } 100% { transform: translateY(0) scale(1); } }
+
+    .cpc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border: none;
+      border-radius: 30px;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 20px;
+      transition: transform .16s, box-shadow .16s, background .16s, color .16s;
+      white-space: nowrap;
+    }
+    .cpc-btn:active { transform: scale(0.97); }
+    .cpc-btn-primary {
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      color: #17100a;
+      box-shadow: 0 6px 20px rgba(245,158,11,0.28);
+    }
+    .cpc-btn-primary:hover { box-shadow: 0 9px 26px rgba(245,158,11,0.42); }
+    .cpc-btn-ghost {
+      background: transparent;
+      border: 1px solid var(--cpc-line-light);
+      color: var(--cpc-text);
+    }
+    .cpc-btn-ghost:hover { border-color: var(--cpc-accent); color: var(--cpc-accent-soft); background: rgba(245,158,11,0.06); }
+    .cpc-btn-soft {
+      background: var(--cpc-cyan-soft);
+      color: var(--cpc-cyan);
+      border: 1px solid rgba(34,211,238,0.3);
+    }
+    .cpc-btn-soft:hover { background: rgba(34,211,238,0.24); }
+
+    .cpc-menu-toggle {
+      display: none;
+      background: var(--cpc-bg-soft);
+      border: 1px solid var(--cpc-line);
+      color: var(--cpc-text);
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      font-size: 19px;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    /* ===== 通用容器与排版 ===== */
+    .cpc-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .cpc-section {
+      padding: 62px 0;
+      border-bottom: 1px solid var(--cpc-line);
+      position: relative;
+    }
+    .cpc-section:last-of-type { border-bottom: none; }
+
+    .cpc-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      color: var(--cpc-accent-soft);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .cpc-eyebrow::before {
+      content: "";
+      width: 22px; height: 2px;
+      background: var(--cpc-accent);
+      border-radius: 2px;
+    }
+
+    .cpc-h2 {
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+    .cpc-h2 .cpc-h2-accent { color: var(--cpc-accent-soft); }
+
+    .cpc-h3 {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .cpc-lead {
+      font-size: 15px;
+      color: var(--cpc-text-soft);
+      max-width: 720px;
+      line-height: 1.85;
+    }
+
+    .cpc-section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .cpc-section-head .cpc-lead { margin-top: 2px; }
+
+    /* ===== 首屏 Hero ===== */
+    .cpc-hero {
+      padding: 46px 0 58px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--cpc-line);
+    }
+    .cpc-hero::before {
+      content: "";
+      position: absolute;
+      top: -200px; right: -160px;
+      width: 620px; height: 620px;
+      background: radial-gradient(circle, rgba(245,158,11,0.15), transparent 65%);
+      pointer-events: none;
+    }
+    .cpc-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -220px; left: -180px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(34,211,238,0.10), transparent 65%);
+      pointer-events: none;
+    }
+    .cpc-hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .cpc-hero-copy .cpc-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.34);
+      color: var(--cpc-accent-soft);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+    }
+    .cpc-hero-copy .cpc-hero-badge .cpc-live-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--cpc-accent);
+      box-shadow: 0 0 0 4px rgba(245,158,11,0.25);
+      animation: cpc-pulse 1.8s infinite;
+    }
+    @keyframes cpc-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+      50% { box-shadow: 0 0 0 6px rgba(245,158,11,0); }
+    }
+
+    .cpc-hero h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .cpc-hero h1 .cpc-hero-h1-accent {
+      background: linear-gradient(100deg, #fbbf24, #f97316 70%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .cpc-hero-desc {
+      font-size: 15.5px;
+      color: var(--cpc-text-soft);
+      line-height: 1.9;
+      margin-bottom: 24px;
+      max-width: 540px;
+    }
+    .cpc-hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .cpc-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      max-width: 480px;
+    }
+    .cpc-stat {
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line);
+      border-radius: var(--cpc-radius-sm);
+      padding: 14px 14px 12px;
+    }
+    .cpc-stat-value {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--cpc-accent-soft);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .cpc-stat-label {
+      font-size: 12px;
+      color: var(--cpc-text-dim);
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Hero 主视觉 */
+    .cpc-hero-visual {
+      position: relative;
+      border-radius: var(--cpc-radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--cpc-line-light);
+      box-shadow: var(--cpc-shadow);
+      background: var(--cpc-bg-card);
+    }
+    .cpc-hero-visual svg { width: 100%; height: auto; display: block; }
+    .cpc-hero-visual-caption {
+      position: absolute;
+      left: 16px; bottom: 16px;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(11,17,32,0.72);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 10px 14px;
+    }
+    .cpc-hero-visual-caption strong {
+      font-size: 13px;
+      display: block;
+      color: var(--cpc-text);
+    }
+    .cpc-hero-visual-caption span {
+      font-size: 11.5px;
+      color: var(--cpc-text-dim);
+    }
+    .cpc-hero-visual-caption .cpc-badge-contest {
+      font-size: 11px;
+      background: rgba(245,158,11,0.2);
+      color: var(--cpc-accent-soft);
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(245,158,11,0.4);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ===== 焦点内容 ===== */
+    .cpc-feature-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 26px;
+    }
+    .cpc-feature-main {
+      border-radius: var(--cpc-radius);
+      border: 1px solid var(--cpc-line);
+      background: var(--cpc-bg-card);
+      overflow: hidden;
+      transition: transform .2s, border-color .2s;
+    }
+    .cpc-feature-main:hover { transform: translateY(-3px); border-color: var(--cpc-line-light); }
+    .cpc-feature-main svg { width: 100%; height: auto; aspect-ratio: 16/9; }
+    .cpc-feature-main-body { padding: 20px 22px 22px; }
+    .cpc-feature-main-body .cpc-video-meta { margin-bottom: 8px; }
+
+    .cpc-tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11.5px;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+      background: var(--cpc-cyan-soft);
+      color: var(--cpc-cyan);
+      border: 1px solid rgba(34,211,238,0.22);
+      white-space: nowrap;
+    }
+    .cpc-tag-warm { background: var(--cpc-accent-glow); color: var(--cpc-accent-soft); border-color: rgba(245,158,11,0.28); }
+    .cpc-tag-violet { background: var(--cpc-violet-soft); color: var(--cpc-violet); border-color: rgba(167,139,250,0.28); }
+    .cpc-tag-green { background: rgba(52,211,153,0.12); color: var(--cpc-green); border-color: rgba(52,211,153,0.28); }
+
+    .cpc-video-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--cpc-text-dim);
+    }
+    .cpc-video-meta .cpc-author-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--cpc-text-soft);
+    }
+    .cpc-avatar-xs {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #0b1120;
+      flex-shrink: 0;
+    }
+    .cpc-stat-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--cpc-text-dim);
+    }
+    .cpc-feed-list { display: flex; flex-direction: column; gap: 14px; }
+    .cpc-feed-item {
+      display: flex;
+      gap: 14px;
+      background: var(--cpc-bg-soft);
+      border: 1px solid var(--cpc-line);
+      border-radius: var(--cpc-radius-sm);
+      padding: 14px;
+      transition: border-color .18s, background .18s, transform .18s;
+      align-items: flex-start;
+    }
+    .cpc-feed-item:hover { border-color: var(--cpc-accent); background: var(--cpc-bg-card); transform: translateX(3px); }
+    .cpc-feed-thumb {
+      width: 92px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--cpc-line);
+    }
+    .cpc-feed-thumb svg { width: 100%; height: auto; aspect-ratio: 16/10; }
+    .cpc-feed-body { min-width: 0; flex: 1; }
+    .cpc-feed-body .cpc-h3 { font-size: 14.5px; }
+    .cpc-feed-body p {
+      font-size: 12.5px;
+      color: var(--cpc-text-dim);
+      line-height: 1.65;
+      margin: 4px 0 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .cpc-feed-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .cpc-action-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      color: var(--cpc-text-dim);
+      background: transparent;
+      border: 1px solid var(--cpc-line-light);
+      border-radius: 20px;
+      padding: 3px 10px;
+      transition: color .16s, border-color .16s, background .16s;
+    }
+    .cpc-action-chip:hover { color: var(--cpc-accent-soft); border-color: var(--cpc-accent); background: rgba(245,158,11,0.06); }
+    .cpc-action-chip.cpc-liked { color: var(--cpc-accent-soft); border-color: rgba(245,158,11,0.5); background: rgba(245,158,11,0.12); }
+    .cpc-action-chip.cpc-faved { color: #fb7185; border-color: rgba(251,113,133,0.5); background: rgba(251,113,133,0.1); }
+
+    /* ===== 视频网格(三列) ===== */
+    .cpc-video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 22px;
+    }
+    .cpc-video-card {
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line);
+      border-radius: var(--cpc-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .cpc-video-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cpc-line-light);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.32);
+    }
+    .cpc-video-card .cpc-video-cover { position: relative; }
+    .cpc-video-card .cpc-video-cover svg { width: 100%; height: auto; aspect-ratio: 16/9; }
+    .cpc-video-cover-badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      font-size: 10.5px;
+      background: rgba(11,17,32,0.82);
+      color: var(--cpc-accent-soft);
+      border: 1px solid rgba(245,158,11,0.35);
+      padding: 2px 9px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .cpc-video-play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transition: opacity .2s;
+      background: rgba(11,17,32,0.35);
+    }
+    .cpc-video-card:hover .cpc-video-play { opacity: 1; }
+    .cpc-play-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(245,158,11,0.92);
+      display: grid; place-items: center;
+      color: #0b1120;
+      font-size: 17px;
+      padding-left: 3px;
+      box-shadow: 0 8px 22px rgba(245,158,11,0.4);
+    }
+    .cpc-video-body { padding: 15px 16px 17px; flex: 1; display: flex; flex-direction: column; }
+    .cpc-video-body .cpc-h3 { font-size: 15px; margin-bottom: 6px; }
+    .cpc-video-body p {
+      font-size: 12.5px;
+      color: var(--cpc-text-dim);
+      line-height: 1.7;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .cpc-video-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== 专题/企划 ===== */
+    .cpc-topic-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+    }
+    .cpc-topic-feature {
+      background: linear-gradient(160deg, #1b2b4e, #111c33 70%);
+      border: 1px solid var(--cpc-line-light);
+      border-radius: var(--cpc-radius);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cpc-topic-feature::after {
+      content: "";
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(245,158,11,0.18), transparent 68%);
+      border-radius: 50%;
+    }
+    .cpc-topic-feature .cpc-topic-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--cpc-green);
+      margin-bottom: 12px;
+    }
+    .cpc-topic-feature .cpc-topic-status::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cpc-green);
+      box-shadow: 0 0 0 3px rgba(52,211,153,0.2);
+    }
+    .cpc-topic-feature h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .cpc-topic-feature > p {
+      font-size: 13.5px;
+      color: var(--cpc-text-soft);
+      line-height: 1.8;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    .cpc-topic-items { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+    .cpc-topic-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: rgba(11,17,32,0.5);
+      border: 1px solid var(--cpc-line);
+      border-radius: 10px;
+      padding: 10px 13px;
+      font-size: 13px;
+      transition: border-color .18s, background .18s;
+    }
+    .cpc-topic-item:hover { border-color: var(--cpc-accent); background: rgba(11,17,32,0.78); }
+    .cpc-topic-item .cpc-topic-index {
+      color: var(--cpc-accent-soft);
+      font-weight: 800;
+      font-size: 12px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .cpc-topic-item .cpc-topic-item-title { font-weight: 600; }
+    .cpc-topic-item .cpc-topic-item-desc {
+      font-size: 12px;
+      color: var(--cpc-text-dim);
+      margin-top: 2px;
+      line-height: 1.6;
+    }
+
+    .cpc-topic-side { display: flex; flex-direction: column; gap: 16px; }
+    .cpc-topic-mini {
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line);
+      border-radius: var(--cpc-radius-sm);
+      padding: 18px 20px;
+      transition: border-color .18s, transform .18s;
+    }
+    .cpc-topic-mini:hover { border-color: var(--cpc-accent); transform: translateY(-2px); }
+    .cpc-topic-mini .cpc-topic-mini-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .cpc-topic-mini h3 { font-size: 16px; font-weight: 700; }
+    .cpc-topic-mini p { font-size: 12.5px; color: var(--cpc-text-dim); line-height: 1.7; }
+    .cpc-mini-meta { font-size: 11.5px; color: var(--cpc-text-dim); margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ===== 创作者矩阵 ===== */
+    .cpc-authors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
+    .cpc-author-card {
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line);
+      border-radius: var(--cpc-radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .2s, transform .2s;
+    }
+    .cpc-author-card:hover { border-color: var(--cpc-accent); transform: translateY(-3px); }
+    .cpc-author-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .cpc-author-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #0b1120;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.06);
+    }
+    .cpc-author-name { font-weight: 700; font-size: 15px; }
+    .cpc-author-field { font-size: 11.5px; color: var(--cpc-accent-soft); margin-top: 2px; }
+    .cpc-author-bio {
+      font-size: 12.5px;
+      color: var(--cpc-text-soft);
+      line-height: 1.75;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+    .cpc-author-stats {
+      display: flex;
+      gap: 14px;
+      font-size: 11.5px;
+      color: var(--cpc-text-dim);
+      padding-top: 10px;
+      border-top: 1px solid var(--cpc-line);
+    }
+    .cpc-author-stats strong { color: var(--cpc-text-soft); font-weight: 700; }
+
+    /* ===== 评价区 ===== */
+    .cpc-comments-layout {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 26px;
+    }
+    .cpc-comment-list { display: flex; flex-direction: column; gap: 14px; }
+    .cpc-comment-item {
+      background: var(--cpc-bg-soft);
+      border: 1px solid var(--cpc-line);
+      border-left: 3px solid var(--cpc-line-light);
+      border-radius: 10px;
+      padding: 14px 16px;
+      transition: border-left-color .18s, background .18s;
+    }
+    .cpc-comment-item:hover { border-left-color: var(--cpc-accent); background: var(--cpc-bg-card); }
+    .cpc-comment-top {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .cpc-comment-user { font-size: 13px; font-weight: 700; }
+    .cpc-comment-time { font-size: 11px; color: var(--cpc-text-dim); margin-left: auto; }
+    .cpc-comment-text { font-size: 13px; color: var(--cpc-text-soft); line-height: 1.7; }
+    .cpc-comment-reply {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--cpc-text-dim);
+      border-left: 2px solid var(--cpc-line-light);
+      padding-left: 10px;
+    }
+    .cpc-comment-side {
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line);
+      border-radius: var(--cpc-radius);
+      padding: 22px;
+      height: fit-content;
+    }
+    .cpc-rating-big {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--cpc-accent-soft);
+    }
+    .cpc-rating-big small { font-size: 15px; color: var(--cpc-text-dim); font-weight: 500; }
+    .cpc-rating-stars { color: var(--cpc-accent); font-size: 16px; letter-spacing: 2px; margin: 8px 0; }
+    .cpc-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      color: var(--cpc-text-dim);
+      margin-top: 8px;
+    }
+    .cpc-rating-bar { flex: 1; height: 6px; border-radius: 6px; background: var(--cpc-line); overflow: hidden; }
+    .cpc-rating-bar span { display: block; height: 100%; background: linear-gradient(90deg, #f59e0b, #fbbf24); border-radius: 6px; }
+
+    /* ===== 品牌解析长文 ===== */
+    .cpc-depth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      gap: 34px;
+    }
+    .cpc-depth-side {
+      position: sticky;
+      top: calc(var(--cpc-scroll-offset) + 12px);
+      align-self: start;
+    }
+    .cpc-depth-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 18px;
+    }
+    .cpc-depth-nav a {
+      font-size: 13px;
+      color: var(--cpc-text-dim);
+      padding: 7px 12px;
+      border-radius: 8px;
+      border-left: 2px solid transparent;
+      transition: color .16s, background .16s, border-color .16s;
+    }
+    .cpc-depth-nav a:hover { color: var(--cpc-accent-soft); background: rgba(245,158,11,0.06); border-left-color: var(--cpc-accent); }
+    .cpc-depth-body p {
+      font-size: 14px;
+      color: var(--cpc-text-soft);
+      line-height: 1.95;
+      margin-bottom: 16px;
+    }
+    .cpc-depth-body p strong { color: var(--cpc-accent-soft); font-weight: 700; }
+    .cpc-depth-body .cpc-h3 { margin-top: 26px; margin-bottom: 8px; color: var(--cpc-text); }
+    .cpc-depth-body .cpc-h3:first-child { margin-top: 0; }
+    .cpc-pullquote {
+      border-left: 3px solid var(--cpc-accent);
+      background: rgba(245,158,11,0.07);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      font-size: 14px;
+      color: var(--cpc-text);
+      line-height: 1.8;
+      margin: 20px 0;
+    }
+
+    /* ===== 企业动态 / 伙伴 / FAQ ===== */
+    .cpc-aux-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 30px;
+    }
+    .cpc-news-list { display: flex; flex-direction: column; gap: 12px; }
+    .cpc-news-item {
+      display: flex;
+      gap: 14px;
+      padding: 13px 16px;
+      background: var(--cpc-bg-soft);
+      border: 1px solid var(--cpc-line);
+      border-radius: 10px;
+      align-items: baseline;
+      transition: border-color .17s, background .17s;
+    }
+    .cpc-news-item:hover { border-color: var(--cpc-line-light); background: var(--cpc-bg-card); }
+    .cpc-news-date {
+      font-size: 11.5px;
+      color: var(--cpc-accent-soft);
+      font-weight: 700;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .cpc-news-text { font-size: 13px; color: var(--cpc-text-soft); line-height: 1.65; }
+    .cpc-news-text b { color: var(--cpc-text); }
+
+    .cpc-partners-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+    .cpc-partner {
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line);
+      border-radius: 10px;
+      padding: 16px 14px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cpc-text-soft);
+      letter-spacing: 0.02em;
+      transition: border-color .17s, color .17s;
+    }
+    .cpc-partner:hover { border-color: var(--cpc-accent); color: var(--cpc-accent-soft); }
+
+    .cpc-faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+    .cpc-faq-item {
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cpc-faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 13px 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--cpc-text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: background .16s;
+    }
+    .cpc-faq-item summary::-webkit-details-marker { display: none; }
+    .cpc-faq-item summary:hover { background: var(--cpc-bg-card-hover); }
+    .cpc-faq-item summary::after {
+      content: "+";
+      font-size: 17px;
+      color: var(--cpc-accent);
+      font-weight: 400;
+      flex-shrink: 0;
+      transition: transform .2s;
+    }
+    .cpc-faq-item[open] summary::after { transform: rotate(45deg); }
+    .cpc-faq-item .cpc-faq-answer {
+      padding: 0 16px 14px;
+      font-size: 12.5px;
+      color: var(--cpc-text-dim);
+      line-height: 1.8;
+    }
+
+    /* ===== 页脚 ===== */
+    .cpc-footer {
+      background: #080d18;
+      border-top: 1px solid var(--cpc-line);
+      padding: 46px 0 28px;
+      margin-top: 0;
+    }
+    .cpc-footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+    .cpc-footer-brand .cpc-logo { margin-bottom: 12px; }
+    .cpc-footer-brand p {
+      font-size: 12.5px;
+      color: var(--cpc-text-dim);
+      line-height: 1.8;
+      max-width: 300px;
+    }
+    .cpc-footer-col h4 {
+      font-size: 13px;
+      color: var(--cpc-text);
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .cpc-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .cpc-footer-col a { font-size: 12.5px; color: var(--cpc-text-dim); transition: color .16s; }
+    .cpc-footer-col a:hover { color: var(--cpc-accent-soft); }
+    .cpc-footer-bottom {
+      border-top: 1px solid var(--cpc-line);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 11.5px;
+      color: var(--cpc-text-dim);
+    }
+    .cpc-footer-bottom .cpc-filing { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* ===== 回到顶部 ===== */
+    .cpc-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 26px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-line-light);
+      color: var(--cpc-accent-soft);
+      font-size: 19px;
+      display: grid;
+      place-items: center;
+      z-index: 90;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity .25s, transform .25s, visibility .25s, border-color .2s;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.4);
+    }
+    .cpc-to-top.cpc-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .cpc-to-top:hover { border-color: var(--cpc-accent); }
+
+    /* ===== Toast ===== */
+    .cpc-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 32px;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--cpc-bg-card);
+      border: 1px solid var(--cpc-accent);
+      color: var(--cpc-accent-soft);
+      font-size: 13px;
+      padding: 10px 22px;
+      border-radius: 30px;
+      z-index: 200;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s, transform .3s, visibility .3s;
+      box-shadow: var(--cpc-shadow);
+      white-space: nowrap;
+      max-width: calc(100vw - 40px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cpc-toast.cpc-show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 1024px) {
+      .cpc-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cpc-hero-stats { max-width: 100%; }
+      .cpc-feature-layout,
+      .cpc-topic-layout,
+      .cpc-comments-layout,
+      .cpc-depth-grid,
+      .cpc-aux-grid { grid-template-columns: 1fr; }
+      .cpc-depth-side { position: static; }
+      .cpc-authors-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cpc-video-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cpc-footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .cpc-menu-toggle { display: grid; }
+      .cpc-header-inner { gap: 12px; }
+      .cpc-nav {
+        position: absolute;
+        top: calc(var(--cpc-header-h) + var(--cpc-announce-h));
+        left: 0; right: 0;
+        background: var(--cpc-bg-soft);
+        border-bottom: 1px solid var(--cpc-line);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 16px;
+        gap: 2px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height .3s ease, opacity .25s, visibility .25s, padding .25s;
+        scroll-padding-top: 0;
+        z-index: 99;
+      }
+      .cpc-nav.cpc-open {
+        max-height: 360px;
+        opacity: 1;
+        visibility: visible;
+        padding: 12px 16px 16px;
+      }
+      .cpc-nav a { padding: 10px 12px; font-size: 14px; }
+      .cpc-header-tools .cpc-btn-primary { display: none; }
+      .cpc-search input { width: 90px; }
+      .cpc-section { padding: 44px 0; }
+      .cpc-hero { padding: 32px 0 42px; }
+      .cpc-hero-actions { gap: 8px; }
+      .cpc-hero-actions .cpc-btn { padding: 9px 16px; font-size: 13px; }
+      .cpc-video-grid,
+      .cpc-authors-grid { grid-template-columns: 1fr; }
+      .cpc-footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .cpc-hero-stats { grid-template-columns: 1fr 1fr; }
+      .cpc-hero-stats .cpc-stat:last-child { grid-column: span 2; }
+      .cpc-feed-item { flex-direction: row; }
+      .cpc-feed-thumb { width: 76px; }
+      .cpc-announce-bar { font-size: 11.5px; gap: 8px; padding: 8px 12px; }
+      .cpc-to-top { right: 14px; bottom: 16px; }
+      .cpc-section-head { align-items: flex-start; }
+    }
+
+    @media (max-width: 420px) {
+      .cpc-header-inner { padding: 0 14px; }
+      .cpc-wrap { padding: 0 16px; }
+      .cpc-logo-text { font-size: 15px; }
+      .cpc-search input { width: 68px; }
+      .cpc-hero-actions .cpc-btn { width: 100%; }
+    }
+
+    /* 焦点内容动画 */
+    @keyframes cpc-fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .cpc-anim-up { animation: cpc-fade-up .5s ease both; }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- S1: 公告条 + 页头 -->
+  <div class="cpc-sticky-wrap">
+    <div class="cpc-announce-bar">
+      <span class="cpc-announce-tag">官方公告</span>
+      <span>「反差瞬间·第二季」报名通道已开启，上传作品即可参与官方评选。</span>
+      <a href="#cpc-contest">查看参赛细则 →</a>
+    </div>
+    <header class="cpc-header">
+      <div class="cpc-header-inner">
+        <a href="#cpc-top" class="cpc-logo" aria-label="校园反差大赛官方网站首页">
+          <span class="cpc-logo-mark">↯</span>
+          <span class="cpc-logo-text">校园反差大赛<small>CAMPUS CONTRAST</small></span>
+        </a>
+
+        <nav class="cpc-nav" id="cpcPrimaryNav" aria-label="主导航">
+          <a href="#cpc-feature">焦点内容</a>
+          <a href="#cpc-videos">热门视频</a>
+          <a href="#cpc-topics">专题企划</a>
+          <a href="#cpc-authors">创作者</a>
+          <a href="#cpc-comments">用户评价</a>
+          <a href="#cpc-depth">品牌解析</a>
+          <a href="#cpc-aux">动态与FAQ</a>
+        </nav>
+
+        <div class="cpc-header-tools">
+          <div class="cpc-search">
+            <input type="text" id="cpcSearchInput" placeholder="搜索反差瞬间…" aria-label="搜索内容">
+            <button type="button" id="cpcSearchBtn" aria-label="搜索">⌕</button>
+            <div class="cpc-search-feedback" id="cpcSearchFeedback"></div>
+          </div>
+          <button class="cpc-btn cpc-btn-primary" id="cpcSubmitBtn" type="button">投稿参赛</button>
+          <button class="cpc-menu-toggle" id="cpcMenuToggle" aria-label="展开导航菜单" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- S2: 品牌首屏 Hero -->
+  <section class="cpc-hero" id="cpc-top">
+    <div class="cpc-wrap">
+      <div class="cpc-hero-grid">
+        <div class="cpc-hero-copy">
+          <div class="cpc-hero-badge">
+            <span class="cpc-live-dot"></span>
+            官方网站 · 2026 秋冬季赛事进行中
+          </div>
+          <h1>校园反差大赛<span class="cpc-hero-h1-accent">。</span></h1>
+          <p class="cpc-hero-desc">
+            作为国内专注校园反差内容的原创视频品牌，校园反差大赛致力于为高校创作者与企业搭建高品质内容生态。我们把镜头对准课堂内外那些意想不到的瞬间——严肃与幽默、安静与热烈、平凡与闪耀，让每一份真实的青春反差，都值得被高清记录与正版传播。
+          </p>
+          <div class="cpc-hero-actions">
+            <a href="#cpc-videos" class="cpc-btn cpc-btn-primary">观看热门作品</a>
+            <a href="#cpc-contest" class="cpc-btn cpc-btn-ghost">参与官方比赛</a>
+            <button class="cpc-btn cpc-btn-soft" type="button" id="cpcSubmitBtn2">提交我的反差瞬间</button>
+          </div>
+          <div class="cpc-hero-stats">
+            <div class="cpc-stat">
+              <div class="cpc-stat-value">2,860<span>+</span></div>
+              <div class="cpc-stat-label">原创参赛作品</div>
+            </div>
+            <div class="cpc-stat">
+              <div class="cpc-stat-value">186<span>万</span></div>
+              <div class="cpc-stat-label">社区创作者关注</div>
+            </div>
+            <div class="cpc-stat">
+              <div class="cpc-stat-value">97.4<span>%</span></div>
+              <div class="cpc-stat-label">用户口碑好评率</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cpc-hero-visual cpc-anim-up">
+          <svg viewBox="0 0 640 430" role="img" aria-label="校园反差大赛官方主视觉：教室与舞台交织的反差瞬间插画">
+            <defs>
+              <linearGradient id="cpcSkyGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1b2b4e"/>
+                <stop offset="100%" stop-color="#0e1830"/>
+              </linearGradient>
+              <linearGradient id="cpcStageGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#f97316" stop-opacity="0.35"/>
+              </linearGradient>
+              <linearGradient id="cpcDeskGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#2a3f66"/>
+                <stop offset="100%" stop-color="#172541"/>
+              </linearGradient>
+              <radialGradient id="cpcSpot" cx="50%" cy="30%" r="60%">
+                <stop offset="0%" stop-color="#fde68a" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#fde68a" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="640" height="430" fill="url(#cpcSkyGrad)"/>
+            <rect x="0" y="0" width="640" height="430" fill="url(#cpcSpot)"/>
+            <!-- 左侧教室 -->
+            <rect x="34" y="120" width="238" height="180" rx="8" fill="#172541" stroke="#334d74"/>
+            <rect x="48" y="134" width="86" height="58" rx="4" fill="#263a5c"/>
+            <rect x="48" y="134" width="86" height="26" rx="4" fill="#334d74"/>
+            <line x1="58" y1="160" x2="122" y2="160" stroke="#0b1120" stroke-width="4"/>
+            <rect x="150" y="134" width="108" height="58" rx="4" fill="#20324f"/>
+            <circle cx="178" cy="158" r="12" fill="#f59e0b" opacity="0.85"/>
+            <rect x="198" y="150" width="48" height="5" rx="2.5" fill="#4b6690"/>
+            <rect x="198" y="162" width="34" height="5" rx="2.5" fill="#3a5378"/>
+            <!-- 课桌与学生 -->
+            <rect x="52" y="226" width="200" height="16" rx="5" fill="url(#cpcDeskGrad)"/>
+            <rect x="62" y="242" width="8" height="58" fill="#0f1a2e"/>
+            <rect x="234" y="242" width="8" height="58" fill="#0f1a2e"/>
+            <circle cx="112" cy="204" r="20" fill="#e8b98a"/>
+            <rect x="90" y="222" width="44" height="28" rx="8" fill="#22d3ee" opacity="0.75"/>
+            <rect x="180" y="206" width="56" height="24" rx="5" fill="#a78bfa" opacity="0.35"/>
+            <!-- 中间反差分割线 -->
+            <line x1="320" y1="70" x2="320" y2="380" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7 9" opacity="0.85"/>
+            <circle cx="320" cy="214" r="22" fill="#0b1120" stroke="#f59e0b" stroke-width="2"/>
+            <path d="M312 204 L334 214 L312 224 Z" fill="#f59e0b"/>
+            <!-- 右侧舞台 -->
+            <rect x="366" y="128" width="238" height="172" rx="8" fill="#131f37" stroke="#334d74"/>
+            <rect x="366" y="128" width="238" height="172" rx="8" fill="url(#cpcStageGrad)" opacity="0.22"/>
+            <ellipse cx="485" cy="302" rx="90" ry="12" fill="#0b1120" opacity="0.6"/>
+            <!-- 舞台人物 -->
+            <circle cx="470" cy="226" r="17" fill="#f1c7a0"/>
+            <path d="M444 300 Q450 246 470 244 Q492 246 498 300 Z" fill="#f59e0b" opacity="0.9"/>
+            <rect x="462" y="256" width="18" height="4" rx="2" fill="#0b1120" opacity="0.4"/>
+            <!-- 聚光灯 -->
+            <path d="M400 128 L386 300 L470 300 L470 128 Z" fill="#fde68a" opacity="0.16"/>
+            <circle cx="500" cy="188" r="5" fill="#fbbf24"/>
+            <circle cx="524" cy="206" r="3" fill="#22d3ee"/>
+            <circle cx="548" cy="184" r="4" fill="#a78bfa"/>
+            <!-- 底部文字块 -->
+            <rect x="34" y="348" width="170" height="34" rx="8" fill="#0b1120" stroke="#334d74"/>
+            <text x="119" y="370" font-size="14" fill="#9fb0c8" text-anchor="middle" font-family="sans-serif" letter-spacing="2">课堂 · 安静</text>
+            <rect x="436" y="348" width="170" height="34" rx="8" fill="#0b1120" stroke="#f59e0b"/>
+            <text x="521" y="370" font-size="14" fill="#fbbf24" text-anchor="middle" font-family="sans-serif" letter-spacing="2">舞台 · 闪耀</text>
+          </svg>
+          <div class="cpc-hero-visual-caption">
+            <div>
+              <strong>本期主视觉 ·《切换频道的青春》</strong>
+              <span>同一群人，两种状态，都是真实的校园</span>
+            </div>
+            <span class="cpc-badge-contest">官方出品</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3: 焦点内容 (M2 + M3) -->
+  <section class="cpc-section" id="cpc-feature">
+    <div class="cpc-wrap">
+      <div class="cpc-section-head">
+        <div>
+          <div class="cpc-eyebrow">焦点内容 · FEATURED</div>
+          <h2 class="cpc-h2">本期最高票选<span class="cpc-h2-accent">反差名场面</span></h2>
+          <p class="cpc-lead">由社区投票与官方评审共同选出，每一帧都记录着意想不到的真实反应。校园反差大赛坚持原创与正版，让好内容被更多人看见。</p>
+        </div>
+        <a href="#cpc-videos" class="cpc-btn cpc-btn-ghost">查看全部作品</a>
+      </div>
+
+      <div class="cpc-feature-layout">
+        <!-- 重点大图 -->
+        <article class="cpc-feature-main">
+          <svg viewBox="0 0 720 405" role="img" aria-label="焦点作品《下课后我成了乐队主唱》视频封面插画">
+            <defs>
+              <linearGradient id="cpcMainGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1b2b4e"/>
+                <stop offset="55%" stop-color="#12213c"/>
+                <stop offset="100%" stop-color="#0b1120"/>
+              </linearGradient>
+              <linearGradient id="cpcAmpGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f59e0b"/>
+                <stop offset="100%" stop-color="#b45309"/>
+              </linearGradient>
+            </defs>
+            <rect width="720" height="405" fill="url(#cpcMainGrad)"/>
+            <circle cx="560" cy="90" r="130" fill="#f59e0b" opacity="0.1"/>
+            <circle cx="120" cy="330" r="150" fill="#22d3ee" opacity="0.07"/>
+            <!-- 舞台地面 -->
+            <ellipse cx="360" cy="356" rx="280" ry="26" fill="#080d18" opacity="0.7"/>
+            <!-- 乐器 -->
+            <rect x="120" y="252" width="86" height="74" rx="7" fill="url(#cpcAmpGrad)"/>
+            <circle cx="146" cy="286" r="14" fill="#0b1120"/>
+            <circle cx="182" cy="286" r="14" fill="#0b1120"/>
+            <rect x="520" y="230" width="90" height="96" rx="7" fill="#263a5c"/>
+            <line x1="536" y1="250" x2="594" y2="250" stroke="#4b6690" stroke-width="4"/>
+            <line x1="536" y1="266" x2="594" y2="266" stroke="#4b6690" stroke-width="4"/>
+            <line x1="536" y1="282" x2="594" y2="282" stroke="#4b6690" stroke-width="4"/>
+            <!-- 主唱 -->
+            <circle cx="360" cy="150" r="30" fill="#f1c7a0"/>
+            <path d="M330 150 q30 -32 60 0" fill="#3f2a1d"/>
+            <path d="M318 330 q6 -96 42 -96 q36 0 42 96 Z" fill="#22d3ee" opacity="0.85"/>
+            <rect x="348" y="196" width="24" height="40" rx="6" fill="#f59e0b"/>
+            <!-- 麦克风 -->
+            <rect x="352" y="236" width="8" height="62" rx="4" fill="#9fb0c8"/>
+            <circle cx="356" cy="232" r="11" fill="#e8eef7"/>
+            <!-- 观众剪影 -->
+            <circle cx="180" cy="352" r="12" fill="#172541"/>
+            <circle cx="214" cy="360" r="10" fill="#172541"/>
+            <circle cx="500" cy="356" r="12" fill="#172541"/>
+            <circle cx="538" cy="362" r="10" fill="#172541"/>
+            <!-- 反差标签 -->
+            <rect x="30" y="34" width="132" height="32" rx="16" fill="#0b1120" stroke="#f59e0b"/>
+            <text x="96" y="55" font-size="14" fill="#fbbf24" text-anchor="middle" font-family="sans-serif" font-weight="bold">课堂安静型 → 主唱</text>
+          </svg>
+          <div class="cpc-feature-main-body">
+            <div class="cpc-video-meta">
+              <span class="cpc-tag cpc-tag-warm">焦点推荐</span>
+              <span class="cpc-author-mini">
+                <span class="cpc-avatar-xs" style="background:#f59e0b">林</span>
+                林声慢
+              </span>
+              <span class="cpc-stat-inline">▶ 48.6万</span>
+              <span class="cpc-stat-inline">♡ 3.2万</span>
+            </div>
+            <h3 class="cpc-h3">下课后我成了乐队主唱：一个“社恐”的舞台反差实验</h3>
+            <p>白天他在图书馆最角落的位置默背单词，晚上他站上校园音乐节的主舞台，用一首原创把全场唱到起立。这是他记录的第 47 次“反差练习”。</p>
+            <div class="cpc-feed-actions">
+              <button class="cpc-action-chip" type="button" data-cpc-like>👍 点赞</button>
+              <button class="cpc-action-chip" type="button" data-cpc-fav>♡ 收藏</button>
+              <button class="cpc-action-chip" type="button" data-cpc-share>↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- 文字推荐列表 -->
+        <div class="cpc-feed-list">
+          <article class="cpc-feed-item">
+            <div class="cpc-feed-thumb">
+              <svg viewBox="0 0 160 100" role="img" aria-label="食堂窗口阿姨与数学课堂的反差视频缩略图">
+                <rect width="160" height="100" fill="#172541"/>
+                <rect x="10" y="58" width="60" height="30" rx="4" fill="#f59e0b" opacity="0.7"/>
+                <circle cx="40" cy="46" r="12" fill="#e8b98a"/>
+                <rect x="88" y="20" width="60" height="42" rx="4" fill="#263a5c"/>
+                <text x="118" y="46" font-size="15" fill="#9fb0c8" text-anchor="middle" font-family="sans-serif">∑</text>
+              </svg>
+            </div>
+            <div class="cpc-feed-body">
+              <h3 class="cpc-h3" style="font-size:14px">食堂阿姨的板书：她在窗口后面写下了整面公式</h3>
+              <p>打饭间隙掏出粉笔认真演算，学生偷拍后才发现她是退休数学老师。</p>
+              <div class="cpc-feed-actions">
+                <span class="cpc-tag">治愈影像</span>
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 1.8万</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡ 收藏</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cpc-feed-item">
+            <div class="cpc-feed-thumb">
+              <svg viewBox="0 0 160 100" role="img" aria-label="安静室友深夜在宿舍跳街舞的反差视频缩略图">
+                <rect width="160" height="100" fill="#0e1830"/>
+                <rect x="0" y="74" width="160" height="26" fill="#1b2b4e"/>
+                <rect x="30" y="24" width="100" height="42" rx="4" fill="#263a5c"/>
+                <circle cx="80" cy="60" r="10" fill="#a78bfa"/>
+                <path d="M70 72 q10 -10 20 0" stroke="#a78bfa" stroke-width="3" fill="none"/>
+                <circle cx="132" cy="30" r="7" fill="#22d3ee" opacity="0.8"/>
+              </svg>
+            </div>
+            <div class="cpc-feed-body">
+              <h3 class="cpc-h3" style="font-size:14px">室友说梦话都在背单词，结果半夜跳起了街舞</h3>
+              <p>凌晨两点宿舍走廊的即兴舞步，安静学霸的另一面让全楼层沸腾。</p>
+              <div class="cpc-feed-actions">
+                <span class="cpc-tag cpc-tag-violet">创作幕后</span>
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 9,641</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡ 收藏</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cpc-feed-item">
+            <div class="cpc-feed-thumb">
+              <svg viewBox="0 0 160 100" role="img" aria-label="教授课间用方言讲脱口秀的反差视频缩略图">
+                <rect width="160" height="100" fill="#131f37"/>
+                <rect x="20" y="26" width="120" height="34" rx="4" fill="#20324f"/>
+                <rect x="30" y="34" width="100" height="4" rx="2" fill="#4b6690"/>
+                <rect x="30" y="44" width="72" height="4" rx="2" fill="#4b6690"/>
+                <circle cx="136" cy="72" r="15" fill="#f59e0b" opacity="0.85"/>
+                <path d="M130 70 q6 8 12 0" stroke="#0b1120" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <div class="cpc-feed-body">
+              <h3 class="cpc-h3" style="font-size:14px">严肃教授课间开麦：用方言讲了十分钟脱口秀</h3>
+              <p>学术严谨与幽默松弛的强烈反差，课堂气氛被彻底点燃。</p>
+              <div class="cpc-feed-actions">
+                <span class="cpc-tag cpc-tag-green">人物访谈</span>
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 2.4万</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡ 收藏</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cpc-feed-item">
+            <div class="cpc-feed-thumb">
+              <svg viewBox="0 0 160 100" role="img" aria-label="体育生在画室安静画素描的反差视频缩略图">
+                <rect width="160" height="100" fill="#172541"/>
+                <rect x="16" y="18" width="82" height="66" rx="5" fill="#263a5c"/>
+                <path d="M34 66 q20 -38 42 -18" stroke="#f59e0b" stroke-width="4" fill="none"/>
+                <circle cx="126" cy="56" r="17" fill="#34d399" opacity="0.55"/>
+                <rect x="116" y="76" width="20" height="12" rx="3" fill="#34d399" opacity="0.8"/>
+              </svg>
+            </div>
+            <div class="cpc-feed-body">
+              <h3 class="cpc-h3" style="font-size:14px">肌肉与线条：体育生第一次走进画室之后</h3>
+              <p>习惯了赛场呐喊的人，在安静画布前完成了一次温柔的反差。</p>
+              <div class="cpc-feed-actions">
+                <span class="cpc-tag">艺术美学</span>
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 1.1万</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡ 收藏</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 继续: 热门视频流 (M3) -->
+  <section class="cpc-section" id="cpc-videos">
+    <div class="cpc-wrap">
+      <div class="cpc-section-head">
+        <div>
+          <div class="cpc-eyebrow">热门视频 · TRENDING</div>
+          <h2 class="cpc-h2">社区正在播放的<span class="cpc-h2-accent">校园反差</span></h2>
+          <p class="cpc-lead">校园反差大赛官网每日更新，持续运营优质原创内容，让每一份真实的青春力量都能被看见。</p>
+        </div>
+        <button class="cpc-btn cpc-btn-ghost" type="button" id="cpcShareSite">分享本页</button>
+      </div>
+
+      <div class="cpc-video-grid">
+        <article class="cpc-video-card">
+          <div class="cpc-video-cover">
+            <svg viewBox="0 0 360 203" role="img" aria-label="视频封面：考研倒计时教室突然变成合唱团">
+              <rect width="360" height="203" fill="#12213c"/>
+              <rect x="24" y="34" width="150" height="100" rx="6" fill="#263a5c"/>
+              <line x1="40" y1="64" x2="158" y2="64" stroke="#4b6690" stroke-width="3"/>
+              <line x1="40" y1="84" x2="140" y2="84" stroke="#4b6690" stroke-width="3"/>
+              <line x1="40" y1="104" x2="150" y2="104" stroke="#4b6690" stroke-width="3"/>
+              <circle cx="262" cy="94" r="38" fill="#f59e0b" opacity="0.2"/>
+              <circle cx="262" cy="94" r="20" fill="#fbbf24" opacity="0.9"/>
+              <path d="M256 84 L272 94 L256 104 Z" fill="#0b1120"/>
+              <text x="30" y="172" font-size="16" fill="#9fb0c8" font-family="sans-serif">⌛ 12 天</text>
+            </svg>
+            <div class="cpc-video-cover-badge">编辑精选</div>
+            <div class="cpc-video-play"><span class="cpc-play-btn">▶</span></div>
+          </div>
+          <div class="cpc-video-body">
+            <span class="cpc-tag cpc-tag-warm">情感故事</span>
+            <h3 class="cpc-h3">考研倒计时 12 天，整栋自习楼突然合唱起来</h3>
+            <p>从翻书声到和声，从紧绷到热泪，这一段被记录下来的集体记忆，成为本届校园反差大赛最治愈的作品之一。</p>
+            <div class="cpc-video-footer">
+              <div class="cpc-video-meta">
+                <span class="cpc-author-mini"><span class="cpc-avatar-xs" style="background:#22d3ee">周</span>周见白</span>
+                <span class="cpc-stat-inline">▶ 62.3万</span>
+              </div>
+              <div class="cpc-feed-actions">
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 2.1万</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cpc-video-card">
+          <div class="cpc-video-cover">
+            <svg viewBox="0 0 360 203" role="img" aria-label="视频封面：宿管阿姨的深夜缝纫机与手工作品">
+              <rect width="360" height="203" fill="#172541"/>
+              <rect x="40" y="92" width="130" height="58" rx="6" fill="#263a5c"/>
+              <circle cx="86" cy="120" r="16" fill="#f59e0b" opacity="0.85"/>
+              <circle cx="130" cy="120" r="16" fill="#f59e0b" opacity="0.5"/>
+              <path d="M210 60 L280 60 L280 160 L210 160 Z" fill="#20324f" stroke="#4b6690"/>
+              <path d="M222 80 L266 80 L266 140 L222 140 Z" fill="#a78bfa" opacity="0.35"/>
+              <text x="216" y="26" font-size="15" fill="#9fb0c8" font-family="sans-serif">手工 · 布艺</text>
+            </svg>
+            <div class="cpc-video-cover-badge">口碑推荐</div>
+            <div class="cpc-video-play"><span class="cpc-play-btn">▶</span></div>
+          </div>
+          <div class="cpc-video-body">
+            <span class="cpc-tag cpc-tag-violet">手作DIY</span>
+            <h3 class="cpc-h3">宿管阿姨的深夜缝纫机：她为整层楼缝过校服</h3>
+            <p>不起眼的值班室藏着一位布艺高手，学生们毕业前才知道她的作品曾进过省级展览。</p>
+            <div class="cpc-video-footer">
+              <div class="cpc-video-meta">
+                <span class="cpc-author-mini"><span class="cpc-avatar-xs" style="background:#a78bfa">苏</span>苏木手记</span>
+                <span class="cpc-stat-inline">▶ 38.9万</span>
+              </div>
+              <div class="cpc-feed-actions">
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 1.4万</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cpc-video-card">
+          <div class="cpc-video-cover">
+            <svg viewBox="0 0 360 203" role="img" aria-label="视频封面：图书馆管理员下班后打碟的DJ现场">
+              <rect width="360" height="203" fill="#0e1830"/>
+              <circle cx="90" cy="100" r="50" fill="#22d3ee" opacity="0.12"/>
+              <circle cx="90" cy="100" r="30" fill="#0b1120" stroke="#22d3ee" stroke-width="3"/>
+              <circle cx="90" cy="100" r="7" fill="#22d3ee"/>
+              <circle cx="280" cy="100" r="50" fill="#a78bfa" opacity="0.12"/>
+              <circle cx="280" cy="100" r="30" fill="#0b1120" stroke="#a78bfa" stroke-width="3"/>
+              <circle cx="280" cy="100" r="7" fill="#a78bfa"/>
+              <path d="M120 100 Q180 46 250 100" stroke="#f59e0b" stroke-width="3" fill="none"/>
+              <rect x="148" y="160" width="64" height="18" rx="9" fill="#f59e0b" opacity="0.8"/>
+            </svg>
+            <div class="cpc-video-cover-badge">新人榜 Top1</div>
+            <div class="cpc-video-play"><span class="cpc-play-btn">▶</span></div>
+          </div>
+          <div class="cpc-video-body">
+            <span class="cpc-tag">音乐现场</span>
+            <h3 class="cpc-h3">图书馆闭馆后，管理员在借阅台打起了碟</h3>
+            <p>白天他是最安静的守书人，夜晚他是校园派对的控场者。一次值夜班的随手拍，让他成为社区人气创作者。</p>
+            <div class="cpc-video-footer">
+              <div class="cpc-video-meta">
+                <span class="cpc-author-mini"><span class="cpc-avatar-xs" style="background:#34d399">陈</span>陈默发声</span>
+                <span class="cpc-stat-inline">▶ 45.7万</span>
+              </div>
+              <div class="cpc-feed-actions">
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 1.9万</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cpc-video-card">
+          <div class="cpc-video-cover">
+            <svg viewBox="0 0 360 203" role="img" aria-label="视频封面：理科生用公式写情书在黑板上的画面">
+              <rect width="360" height="203" fill="#12213c"/>
+              <rect x="28" y="22" width="304" height="140" rx="8" fill="#1b2b4e" stroke="#334d74"/>
+              <text x="56" y="70" font-size="20" fill="#fbbf24" font-family="monospace">∫ 心动 dx = 无限</text>
+              <text x="56" y="104" font-size="16" fill="#9fb0c8" font-family="monospace">lim 思念 → ∞</text>
+              <text x="56" y="134" font-size="16" fill="#22d3ee" font-family="monospace">E = mc² + 你</text>
+            </svg>
+            <div class="cpc-video-play"><span class="cpc-play-btn">▶</span></div>
+          </div>
+          <div class="cpc-video-body">
+            <span class="cpc-tag cpc-tag-green">知识科普</span>
+            <h3 class="cpc-h3">理科生的浪漫：他把情书写成了满黑板的公式</h3>
+            <p>当数学不再只是考试，它也可以是一次温柔的表达。这支作品让不少文科生第一次读懂了微积分。</p>
+            <div class="cpc-video-footer">
+              <div class="cpc-video-meta">
+                <span class="cpc-author-mini"><span class="cpc-avatar-xs" style="background:#f59e0b">许</span>许工不加班</span>
+                <span class="cpc-stat-inline">▶ 31.2万</span>
+              </div>
+              <div class="cpc-feed-actions">
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 1.1万</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cpc-video-card">
+          <div class="cpc-video-cover">
+            <svg viewBox="0 0 360 203" role="img" aria-label="视频封面：快递站小哥在仓库练美声的画面">
+              <rect width="360" height="203" fill="#131f37"/>
+              <rect x="26" y="110" width="80" height="66" rx="5" fill="#263a5c"/>
+              <rect x="116" y="122" width="64" height="54" rx="5" fill="#20324f"/>
+              <circle cx="250" cy="90" r="34" fill="#f59e0b" opacity="0.22"/>
+              <circle cx="250" cy="88" r="18" fill="#f1c7a0"/>
+              <path d="M238 74 q12 -14 24 0" fill="#3f2a1d"/>
+              <path d="M256 70 q22 -14 18 12" stroke="#fbbf24" stroke-width="4" fill="none"/>
+            </svg>
+            <div class="cpc-video-cover-badge">社区热议</div>
+            <div class="cpc-video-play"><span class="cpc-play-btn">▶</span></div>
+          </div>
+          <div class="cpc-video-body">
+            <span class="cpc-tag cpc-tag-warm">日常记录</span>
+            <h3 class="cpc-h3">快递站小哥的午休：仓库里飘出美声高音</h3>
+            <p>分拣包裹的手也曾握过乐谱。他的这段清唱被学生拍下，让整座校园的午休多了一首免费的歌。</p>
+            <div class="cpc-video-footer">
+              <div class="cpc-video-meta">
+                <span class="cpc-author-mini"><span class="cpc-avatar-xs" style="background:#22d3ee">阿</span>阿南日记</span>
+                <span class="cpc-stat-inline">▶ 27.5万</span>
+              </div>
+              <div class="cpc-feed-actions">
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 9,860</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="cpc-video-card">
+          <div class="cpc-video-cover">
+            <svg viewBox="0 0 360 203" role="img" aria-label="视频封面：校队运动员在辩论赛上发言的画面">
+              <rect width="360" height="203" fill="#172541"/>
+              <rect x="30" y="96" width="120" height="22" rx="6" fill="#263a5c"/>
+              <rect x="210" y="96" width="120" height="22" rx="6" fill="#263a5c"/>
+              <circle cx="88" cy="62" r="22" fill="#34d399" opacity="0.7"/>
+              <circle cx="272" cy="62" r="22" fill="#f59e0b" opacity="0.7"/>
+              <rect x="150" y="24" width="60" height="80" rx="5" fill="#1b2b4e" stroke="#4b6690"/>
+              <text x="180" y="70" font-size="26" fill="#e8eef7" text-anchor="middle" font-family="sans-serif">VS</text>
+            </svg>
+            <div class="cpc-video-play"><span class="cpc-play-btn">▶</span></div>
+          </div>
+          <div class="cpc-video-body">
+            <span class="cpc-tag">深度测评</span>
+            <h3 class="cpc-h3">校队前锋站上辩论台：用一次发言撕掉标签</h3>
+            <p>运动场上的冲撞与辩论席上的逻辑，原来可以在同一个人身上和平共处，且都足够精彩。</p>
+            <div class="cpc-video-footer">
+              <div class="cpc-video-meta">
+                <span class="cpc-author-mini"><span class="cpc-avatar-xs" style="background:#a78bfa">赵</span>赵言必行</span>
+                <span class="cpc-stat-inline">▶ 19.8万</span>
+              </div>
+              <div class="cpc-feed-actions">
+                <button class="cpc-action-chip" type="button" data-cpc-like>👍 7,430</button>
+                <button class="cpc-action-chip" type="button" data-cpc-fav>♡</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4: 专题企划 (M4) -->
+  <section class="cpc-section" id="cpc-topics">
+    <div class="cpc-wrap">
+      <div class="cpc-section-head">
+        <div>
+          <div class="cpc-eyebrow">专题企划 · SERIES</div>
+          <h2 class="cpc-h2">围绕校园反差大赛展开的<span class="cpc-h2-accent">长期内容企划</span></h2>
+          <p class="cpc-lead">我们以专题形式持续深耕校园反差领域，形成可沉淀、可参与的内容生态。</p>
+        </div>
+      </div>
+
+      <div class="cpc-topic-layout">
+        <article class="cpc-topic-feature">
+          <div class="cpc-topic-status">更新中 · 第 4 期</div>
+          <h3>「换位课堂」系列企划</h3>
+          <p>让学生走上讲台，让老师坐回座位。我们用一学期的时间记录角色互换之后，校园里发生的真实变化。这是校园反差大赛最具社会责任的企划之一。</p>
+          <div class="cpc-topic-items">
+            <div class="cpc-topic-item">
+              <span class="cpc-topic-index">01</span>
+              <div>
+                <div class="cpc-topic-item-title">学生第一次备课：他把物理讲成了脱口秀</div>
+                <div class="cpc-topic-item-desc">一节被全校直播的公开课，40 分钟里笑声不断。</div>
+              </div>
+            </div>
+            <div class="cpc-topic-item">
+              <span class="cpc-topic-index">02</span>
+              <div>
+                <div class="cpc-topic-item-title">老师坐进考场：体验一次学生的 90 分钟</div>
+                <div class="cpc-topic-item-desc">从监考者到答题者，身份转变带来的共情与理解。</div>
+              </div>
+            </div>
+            <div class="cpc-topic-item">
+              <span class="cpc-topic-index">03</span>
+              <div>
+                <div class="cpc-topic-item-title">角色互换之后：一节班会上的集体反思</div>
+                <div class="cpc-topic-item-desc">争议、笑声与和解，都被完整收录在镜头里。</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="cpc-topic-side">
+          <article class="cpc-topic-mini">
+            <div class="cpc-topic-mini-head">
+              <h3>「深夜反差」影像档案</h3>
+              <span class="cpc-tag cpc-tag-violet">更新至 06</span>
+            </div>
+            <p>记录校园夜晚的另一套运行法则：自习室的灯、操场的风、值班室的收音机。系列已收录 6 支高清短片，持续更新中。</p>
+            <div class="cpc-mini-meta"><span>创作者自发投稿</span><span>累计播放 214 万</span></div>
+          </article>
+          <article class="cpc-topic-mini">
+            <div class="cpc-topic-mini-head">
+              <h3>「反差之声」人物访谈</h3>
+              <span class="cpc-tag cpc-tag-green">每月一期</span>
+            </div>
+            <p>对话那些在两种身份之间来回切换的人：运动员、理工科学生、宿管、食堂师傅，听他们讲述真实的自我。</p>
+            <div class="cpc-mini-meta"><span>已播出 11 期</span><span>官方访谈栏目</span></div>
+          </article>
+          <article class="cpc-topic-mini">
+            <div class="cpc-topic-mini-head">
+              <h3>「一座校园两种人生」征集</h3>
+              <span class="cpc-tag cpc-tag-warm">开放报名</span>
+            </div>
+            <p>面向全国高校征集反差故事，优秀作品将进入官方精选并参与年度展映，让更多真实被看见。</p>
+            <div class="cpc-mini-meta"><span>报名截至 12 月 20 日</span><span>官方发布</span></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5: 创作者矩阵 (M5) -->
+  <section class="cpc-section" id="cpc-authors">
+    <div class="cpc-wrap">
+      <div class="cpc-section-head">
+        <div>
+          <div class="cpc-eyebrow">创作者矩阵 · CREATORS</div>
+          <h2 class="cpc-h2">校园反差大赛的<span class="cpc-h2-accent">社区创作者</span></h2>
+          <p class="cpc-lead">他们用镜头记录身边的意想不到，是平台内容生态中最值得信赖的原创力量。</p>
+        </div>
+      </div>
+
+      <div class="cpc-authors-grid">
+        <article class="cpc-author-card">
+          <div class="cpc-author-head">
+            <div class="cpc-author-avatar" style="background:linear-gradient(135deg,#f59e0b,#f97316)">林</div>
+            <div>
+              <div class="cpc-author-name">林声慢</div>
+              <div class="cpc-author-field">人物访谈 · 情感故事</div>
+            </div>
+          </div>
+          <p class="cpc-author-bio">校园反差大赛常驻创作者，擅长用温柔的镜头语言记录人物身份的反转。她相信每一次反差背后都藏着一个人真实的自我，坚持原创与真实是她创作的底线。</p>
+          <div class="cpc-author-stats">
+            <span>作品 <strong>86</strong></span>
+            <span>关注 <strong>12.4万</strong></span>
+            <button class="cpc-action-chip" type="button" data-cpc-author>查看档案</button>
+          </div>
+        </article>
+
+        <article class="cpc-author-card">
+          <div class="cpc-author-head">
+            <div class="cpc-author-avatar" style="background:linear-gradient(135deg,#22d3ee,#0ea5e9)">周</div>
+            <div>
+              <div class="cpc-author-name">周见白</div>
+              <div class="cpc-author-field">日常记录 · 治愈影像</div>
+            </div>
+          </div>
+          <p class="cpc-author-bio">把镜头交给校园里最普通的日常。自习室的灯光、走廊的脚步声、食堂的烟火气，都是他作品中的主角。他的创作理念是：最动人的反差，往往藏在最平常的日子里。</p>
+          <div class="cpc-author-stats">
+            <span>作品 <strong>124</strong></span>
+            <span>关注 <strong>18.7万</strong></span>
+            <button class="cpc-action-chip" type="button" data-cpc-author>查看档案</button>
+          </div>
+        </article>
+
+        <article class="cpc-author-card">
+          <div class="cpc-author-head">
+            <div class="cpc-author-avatar" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">苏</div>
+            <div>
+              <div class="cpc-author-name">苏木手记</div>
+              <div class="cpc-author-field">手作DIY · 创作幕后</div>
+            </div>
+          </div>
+          <p class="cpc-author-bio">沉迷手作与细节的创作者，常常在不起眼的角落发现宝藏。她用镜头记录宿管阿姨、维修师傅、食堂厨师的另一面，让手艺与匠心被更多人理解和尊重。</p>
+          <div class="cpc-author-stats">
+            <span>作品 <strong>63</strong></span>
+            <span>关注 <strong>9.8万</strong></span>
+            <button class="cpc-action-chip" type="button" data-cpc-author>查看档案</button>
+          </div>
+        </article>
+
+        <article class="cpc-author-card">
+          <div class="cpc-author-head">
+            <div class="cpc-author-avatar" style="background:linear-gradient(135deg,#34d399,#059669)">陈</div>
+            <div>
+              <div class="cpc-author-name">陈默发声</div>
+              <div class="cpc-author-field">音乐现场 · 城市探索</div>
+            </div>
+          </div>
+          <p class="cpc-author-bio">白天泡在图书馆，晚上混迹于各种音乐现场。他的作品总是带着强烈的节奏反差，安静与躁动在他镜头里共存。校园反差大赛让他第一次敢于公开自己的双重生活。</p>
+          <div class="cpc-author-stats">
+            <span>作品 <strong>57</strong></span>
+            <span>关注 <strong>15.2万</strong></span>
+            <button class="cpc-action-chip" type="button" data-cpc-author>查看档案</button>
+          </div>
+        </article>
+
+        <article class="cpc-author-card">
+          <div class="cpc-author-head">
+            <div class="cpc-author-avatar" style="background:linear-gradient(135deg,#fb7185,#e11d48)">许</div>
+            <div>
+              <div class="cpc-author-name">许工不加班</div>
+              <div class="cpc-author-field">知识科普 · 科技前沿</div>
+            </div>
+          </div>
+          <p class="cpc-author-bio">理工科背景的内容创作者，擅长把复杂的知识讲成轻松的故事。他坚持内容严谨与表达有趣并重，用反差感打破人们对理工生的刻板印象，是社区公认的知识型创作者。</p>
+          <div class="cpc-author-stats">
+            <span>作品 <strong>71</strong></span>
+            <span>关注 <strong>11.6万</strong></span>
+            <button class="cpc-action-chip" type="button" data-cpc-author>查看档案</button>
+          </div>
+        </article>
+
+        <article class="cpc-author-card">
+          <div class="cpc-author-head">
+            <div class="cpc-author-avatar" style="background:linear-gradient(135deg,#fbbf24,#b45309)">阿</div>
+            <div>
+              <div class="cpc-author-name">阿南日记</div>
+              <div class="cpc-author-field">户外活动 · 社区观察</div>
+            </div>
+          </div>
+          <p class="cpc-author-bio">喜欢在校园里到处走动的人。篮球场、快递站、天台、校门口的小摊，都是他的拍摄现场。他用最朴素的记录方式，呈现普通校园工作者身上不普通的那一面。</p>
+          <div class="cpc-author-stats">
+            <span>作品 <strong>49</strong></span>
+            <span>关注 <strong>7.9万</strong></span>
+            <button class="cpc-action-chip" type="button" data-cpc-author>查看档案</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6: 用户评价 + 评分摘要 (M8) -->
+  <section class="cpc-section" id="cpc-comments">
+    <div class="cpc-wrap">
+      <div class="cpc-section-head">
+        <div>
+          <div class="cpc-eyebrow">用户评价 · REVIEWS</div>
+          <h2 class="cpc-h2">他们眼中的<span class="cpc-h2-accent">校园反差大赛</span></h2>
+          <p class="cpc-lead">来自社区创作者、合作企业以及长期关注平台的用户真实反馈，口碑是我们持续运营的底气。</p>
+        </div>
+      </div>
+
+      <div class="cpc-comments-layout">
+        <div class="cpc-comment-list">
+          <div class="cpc-comment-item">
+            <div class="cpc-comment-top">
+              <span class="cpc-avatar-xs" style="background:#f59e0b">苏</span>
+              <span class="cpc-comment-user">苏木手记</span>
+              <span class="cpc-comment-time">2 小时前</span>
+            </div>
+            <p class="cpc-comment-text">第一次在官网看到自己拍的宿管阿姨作品被推荐，真的很感动。平台对原创作者的尊重让我愿意持续在这里发布作品。</p>
+            <div class="cpc-comment-reply">官方回复：感谢你的记录，正是这些真实细节构成了平台的内容底色。</div>
+          </div>
+
+          <div class="cpc-comment-item">
+            <div class="cpc-comment-top">
+              <span class="cpc-avatar-xs" style="background:#22d3ee">周</span>
+              <span class="cpc-comment-user">周见白</span>
+              <span class="cpc-comment-time">5 小时前</span>
+            </div>
+            <p class="cpc-comment-text">作为从第一届就开始投稿的创作者，我见证了校园反差大赛从一个小活动发展成现在的品牌官网，内容生态越来越成熟，审核也一直很严格，值得信赖。</p>
+          </div>
+
+          <div class="cpc-comment-item">
+            <div class="cpc-comment-top">
+              <span class="cpc-avatar-xs" style="background:#34d399">李</span>
+              <span class="cpc-comment-user">李同学在赶稿</span>
+              <span class="cpc-comment-time">昨天</span>
+            </div>
+            <p class="cpc-comment-text">每天睡前必刷的网站。界面很舒服，关键是内容真的有意思，经常看着看着就笑了。希望多出一些幕后花絮类的专题。</p>
+          </div>
+
+          <div class="cpc-comment-item">
+            <div class="cpc-comment-top">
+              <span class="cpc-avatar-xs" style="background:#a78bfa">企</span>
+              <span class="cpc-comment-user">青禾文创</span>
+              <span class="cpc-comment-time">2 天前</span>
+            </div>
+            <p class="cpc-comment-text">我们与校园反差大赛合作了两届赛事，从策划到执行都非常专业。平台对内容品质的把控在同类社区中属于行业领先水平。</p>
+          </div>
+
+          <div class="cpc-comment-item">
+            <div class="cpc-comment-top">
+              <span class="cpc-avatar-xs" style="background:#fb7185">许</span>
+              <span class="cpc-comment-user">许工不加班</span>
+              <span class="cpc-comment-time">3 天前</span>
+            </div>
+            <p class="cpc-comment-text">最欣赏的是平台鼓励真实、包容的表达。作为一个理工科创作者，我在这里找到了愿意听我把公式讲完的观众。这种反差本身就很温暖。</p>
+          </div>
+
+          <div class="cpc-comment-item">
+            <div class="cpc-comment-top">
+              <span class="cpc-avatar-xs" style="background:#fbbf24">王</span>
+              <span class="cpc-comment-user">王六六的背包</span>
+              <span class="cpc-comment-time">4 天前</span>
+            </div>
+            <p class="cpc-comment-text">播放很流畅，高清画质看着很舒服。唯一小建议是希望增加按学校筛选的功能，想把同城的作品都看一遍。</p>
+          </div>
+
+          <div class="cpc-comment-item">
+            <div class="cpc-comment-top">
+              <span class="cpc-avatar-xs" style="background:#0ea5e9">林</span>
+              <span class="cpc-comment-user">林间有风</span>
+              <span class="cpc-comment-time">5 天前</span>
+            </div>
+            <p class="cpc-comment-text">被朋友推荐来的，一进来就被首页那支乐队主唱的视频吸引住了。后来顺着专题把「换位课堂」全看了，很有意义，能看出平台在认真做内容。</p>
+          </div>
+
+          <div class="cpc-comment-item">
+            <div class="cpc-comment-top">
+              <span class="cpc-avatar-xs" style="background:#7c3aed">摄</span>
+              <span class="cpc-comment-user">摄影系阿明</span>
+              <span class="cpc-comment-time">6 天前</span>
+            </div>
+            <p class="cpc-comment-text">从摄影角度看，很多作品构图和光线都很用心，不是随手拍拍。平台的精选机制对新人比较友好，我上传的第一支作品就获得了推荐位。</p>
+          </div>
+        </div>
+
+        <aside class="cpc-comment-side">
+          <div class="cpc-rating-big">4.8<small> / 5</small></div>
+          <div class="cpc-rating-stars">★★★★★</div>
+          <p style="font-size:12.5px;color:var(--cpc-text-dim);line-height:1.7">综合 2,146 位社区用户的真实评分，覆盖内容质量、观看体验、互动氛围与官方响应速度。</p>
+          <div style="margin-top:18px">
+            <div class="cpc-rating-row"><span>内容质量</span><div class="cpc-rating-bar"><span style="width:96%"></span></div><span>96%</span></div>
+            <div class="cpc-rating-row"><span>观看体验</span><div class="cpc-rating-bar"><span style="width:94%"></span></div><span>94%</span></div>
+            <div class="cpc-rating-row"><span>互动氛围</span><div class="cpc-rating-bar"><span style="width:92%"></span></div><span>92%</span></div>
+            <div class="cpc-rating-row"><span>官方响应</span><div class="cpc-rating-bar"><span style="width:97%"></span></div><span>97%</span></div>
+          </div>
+          <button class="cpc-btn cpc-btn-soft" type="button" id="cpcCommentBtn" style="width:100%;margin-top:20px">我也来说两句</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 延伸: 品牌深度解析 (M15) 长文 -->
+  <section class="cpc-section" id="cpc-depth">
+    <div class="cpc-wrap">
+      <div class="cpc-depth-grid">
+        <aside class="cpc-depth-side">
+          <div class="cpc-eyebrow">品牌解析 · INSIGHT</div>
+          <h2 class="cpc-h2" style="font-size:24px">读懂校园反差大赛</h2>
+          <p style="font-size:13px;color:var(--cpc-text-dim);line-height:1.8;margin-top:10px">从品牌使命到内容方法论，全面了解这个校园视频社区如何持续运营。</p>
+          <ul class="cpc-depth-nav">
+            <li><a href="#cpc-depth-why">为什么是“反差”</a></li>
+            <li><a href="#cpc-depth-how">内容如何被筛选</a></li>
+            <li><a href="#cpc-depth-eco">创作者生态的构建</a></li>
+            <li><a href="#cpc-depth-future">下一步的方向</a></li>
+          </ul>
+        </aside>
+
+        <div class="cpc-depth-body">
+          <h3 class="cpc-h3" id="cpc-depth-why">为什么是“反差”：从校园日常里找到叙事张力</h3>
+          <p>校园是一个天然充满反差的场域。清晨的自习室与傍晚的篮球场，安静的图书馆与热闹的社团招新，严谨的课堂与自由的夜晚。校园反差大赛从创立之初就意识到，<strong>真正的故事往往藏在身份与场景的强烈切换之间</strong>。一个平时沉默寡言的学生站上舞台，一个习惯了体能训练的运动员坐下来安静画画，一个在食堂窗口后忙碌的阿姨在收餐时写下一整面黑板公式——这些瞬间不需要刻意编排，它们真实发生，只等着被看见。平台把这些瞬间从零散的手机相册里打捞出来，用统一的内容标准与呈现方式，让它们成为可以被广泛传播的视频作品。</p>
+          <p>这也是校园反差大赛区别于一般校园短视频账号的地方：我们不追求流量密码式的夸张与猎奇，而是坚持<strong>真实、温暖、有力量</strong>的叙事方向。反差的本质不是反差本身，而是反差背后那个完整的、立体的人。我们希望观众看完一支视频后，记住的是人，而不是标签。这种内容理念贯穿于平台的每一条推荐、每一次专题策划和每一场官方比赛。</p>
+
+          <h3 class="cpc-h3" id="cpc-depth-how">内容如何被筛选：一套持续运营的品质标准</h3>
+          <p>作为校园反差大赛官方网站，我们在内容筛选上建立了一套相对完整的流程。首先是<strong>原创性与正版性核查</strong>，这是最基础的底线，任何搬运、拼接或未授权素材都无法进入推荐池。其次是真实场景与表达完整度，我们更倾向于那些有具体细节、有人物弧线的作品，而不仅仅是一个短暂的搞笑瞬间。再次是画面与声音的基础质量，即使是手机拍摄，也需要在构图、光线与收音上有基本的完成度。</p>
+          <p>通过初筛的作品会进入社区投票与编辑评审的双重环节。社区投票反映真实观众的偏好，编辑评审则从内容价值、表达角度与长期影响等维度补充判断。两种机制相互制衡，避免单一标准带来的偏颇。我们也会定期复盘已推荐内容的口碑数据，把那些在评论区和站外被反复提及的作品重新纳入专题或年度精选，让<strong>好内容获得更长的生命周期</strong>。这种持续运营的机制，是平台能够稳定产出品质内容的关键。</p>
+
+          <div class="cpc-pullquote">
+            “反差不是对立，而是理解一个人更完整的方式。校园反差大赛想做的，是把这种理解变成社区的共同语言。”
+          </div>
+
+          <h3 class="cpc-h3" id="cpc-depth-eco">创作者生态的构建：让每位记录者都有位置</h3>
+          <p>校园反差大赛的内容生态不是由少数头部账号支撑的，而是由<strong>大量分散、真实、持续创作的普通学生与校园工作者</strong>共同构成。为了让这些创作者愿意留下来、敢于表达，平台在创作工具、曝光机制与成长路径上做了不少基础工作。投稿入口做得足够简单，一支手机拍摄的横屏或竖屏视频，填写基本信息和作品说明即可上传；官方定期发布的选题方向与拍摄攻略，帮助新人创作者降低起步门槛；新人榜与专题推荐位则为第一次发布作品的用户提供了被看见的机会。</p>
+          <p>与此同时，平台也注重创作者之间的连接。不少合作项目由社区创作者自发组队完成，有人负责拍摄，有人负责出镜，有人负责后期，形成了一个个小型的校园影像工作室。校园反差大赛在其中扮演的角色，不是指挥者而是服务者：提供规范、提供舞台、提供持续的反馈与激励。正是这种<strong>用户至上、多元包容</strong>的社区氛围，让创作者愿意把重要的作品放在这里首发。</p>
+
+          <h3 class="cpc-h3" id="cpc-depth-future">下一步的方向：从记录到影响</h3>
+          <p>面向未来，校园反差大赛希望把“真实记录”推向更广的公共价值。我们正在筹备跨校联展，让不同地区、不同专业背景的创作者在同一主题下对话；也在探索与公益机构的合作，用视频记录校园中被忽视的群体，让影像承担起一点<strong>社会责任</strong>。这些计划不会改变平台的社区属性，恰恰相反，它们让内容生态更完整，让每一位创作者都能感受到自己记录的事情是有意义的。</p>
+          <p>如果你也在校园里，也见过那些让人一愣、然后会心一笑的瞬间，欢迎你成为校园反差大赛的一部分。<strong>官方网站</strong>的投稿入口长期开放，我们期待在下一支作品里，看见你镜头下的反差与真实。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7: 辅助区 企业动态 + 合作品牌 + FAQ (M10 M11 M12) -->
+  <section class="cpc-section" id="cpc-aux">
+    <div class="cpc-wrap">
+      <div class="cpc-section-head">
+        <div>
+          <div class="cpc-eyebrow">企业动态 · 合作与帮助</div>
+          <h2 class="cpc-h2">了解校园反差大赛的<span class="cpc-h2-accent">最新动态</span></h2>
+          <p class="cpc-lead">官方发布、合作进展与常见问题，帮助创作者与合作伙伴更顺畅地参与。</p>
+        </div>
+      </div>
+
+      <div class="cpc-aux-grid">
+        <div>
+          <h3 class="cpc-h3" style="margin-bottom:14px">企业动态</h3>
+          <div class="cpc-news-list">
+            <div class="cpc-news-item">
+              <span class="cpc-news-date">2026.11.18</span>
+              <div class="cpc-news-text"><b>第二季「反差瞬间」官方作品征集正式启动</b>，新增三个校园分区，同步开放移动端投稿通道。</div>
+            </div>
+            <div class="cpc-news-item">
+              <span class="cpc-news-date">2026.11.09</span>
+              <div class="cpc-news-text">平台完成内容审核流程升级，<b>原创标识与正版素材库</b>正式上线，创作者可在作品页查看认证状态。</div>
+            </div>
+            <div class="cpc-news-item">
+              <span class="cpc-news-date">2026.10.27</span>
+              <div class="cpc-news-text">「换位课堂」专题第四期上线，<b>累计播放突破 320 万</b>，成为平台最长线运营的企划之一。</div>
+            </div>
+            <div class="cpc-news-item">
+              <span class="cpc-news-date">2026.10.12</span>
+              <div class="cpc-news-text">与 <b>青禾文创</b> 达成年度内容合作，共同支持校园创作者完成原创短片拍摄与展映。</div>
+            </div>
+          </div>
+
+          <h3 class="cpc-h3" style="margin-top:30px;margin-bottom:14px">合作品牌</h3>
+          <div class="cpc-partners-grid">
+            <div class="cpc-partner">青禾文创</div>
+            <div class="cpc-partner">光合影像</div>
+            <div class="cpc-partner">南风青年</div>
+            <div class="cpc-partner">拾光校园计划</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="cpc-h3" style="margin-bottom:4px">常见问题</h3>
+          <div class="cpc-faq-list">
+            <details class="cpc-faq-item">
+              <summary>如何参与校园反差大赛的官方比赛？</summary>
+              <div class="cpc-faq-answer">在官方网站点击“投稿参赛”按钮，登录后填写作品信息并上传视频。作品需为原创且拥有完整版权，通过审核后即可进入当期评选。</div>
+            </details>
+            <details class="cpc-faq-item">
+              <summary>对视频时长和格式有什么要求？</summary>
+              <div class="cpc-faq-answer">建议时长 30 秒至 8 分钟，支持常见高清视频格式。横屏与竖屏均可，重点作品推荐使用 16:9 高清画质提交。</div>
+            </details>
+            <details class="cpc-faq-item">
+              <summary>作品版权归谁所有？平台会商用吗？</summary>
+              <div class="cpc-faq-answer">作品版权始终归创作者所有。平台仅在获得授权的前提下用于官方推荐、专题展示与展映宣传，不会未经同意进行商业用途。</div>
+            </details>
+            <details class="cpc-faq-item">
+              <summary>可以团队联合投稿吗？</summary>
+              <div class="cpc-faq-answer">可以。上传时在作品说明中标注全部参与成员与分工即可，平台鼓励校园创作者以小组形式合作完成作品。</div>
+            </details>
+            <details class="cpc-faq-item">
+              <summary>审核一般需要多久？</summary>
+              <div class="cpc-faq-answer">常规审核时间为 1 至 3 个工作日。活动高峰期可能稍有延长，审核结果会通过站内通知告知，请留意消息提醒。</div>
+            </details>
+            <details class="cpc-faq-item">
+              <summary>如何申请成为平台认证创作者？</summary>
+              <div class="cpc-faq-answer">在个人主页提交认证申请，需满足持续发布原创作品并保持良好社区记录的条件。认证通过后将获得专属标识与更多推荐机会。</div>
+            </details>
+            <details class="cpc-faq-item">
+              <summary>品牌或机构如何与平台合作？</summary>
+              <div class="cpc-faq-answer">可通过页脚联系方式提交合作意向，说明合作方向与预期。平台会安排专人在 5 个工作日内回复，并优先考虑与校园内容生态契合的合作。</div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S8: 页脚 -->
+  <footer class="cpc-footer" id="cpc-contest">
+    <div class="cpc-wrap">
+      <div class="cpc-footer-grid">
+        <div class="cpc-footer-brand">
+          <a href="#cpc-top" class="cpc-logo">
+            <span class="cpc-logo-mark">↯</span>
+            <span class="cpc-logo-text">校园反差大赛<small>CAMPUS CONTRAST</small></span>
+          </a>
+          <p>校园反差大赛官方网站，专注于记录校园生活中真实、温暖、有力量的反差瞬间。我们坚持原创与正版，持续运营高品质的校园内容社区，期待与你一起看见青春的另一面。</p>
+        </div>
+        <div class="cpc-footer-col">
+          <h4>内容探索</h4>
+          <ul>
+            <li><a href="#cpc-feature">焦点内容</a></li>
+            <li><a href="#cpc-videos">热门视频</a></li>
+            <li><a href="#cpc-topics">专题企划</a></li>
+            <li><a href="#cpc-depth">品牌解析</a></li>
+          </ul>
+        </div>
+        <div class="cpc-footer-col">
+          <h4>参与方式</h4>
+          <ul>
+            <li><a href="#cpc-contest">投稿参赛</a></li>
+            <li><a href="#cpc-authors">创作者矩阵</a></li>
+            <li><a href="#cpc-aux">企业动态</a></li>
+            <li><a href="#cpc-aux">常见问题</a></li>
+          </ul>
+        </div>
+        <div class="cpc-footer-col">
+          <h4>联系我们</h4>
+          <ul>
+            <li><a href="mailto:hello@campuscontrast.com">hello@campuscontrast.com</a></li>
+            <li><a href="#cpc-aux">品牌合作</a></li>
+            <li><a href="#cpc-aux">媒体联络</a></li>
+            <li><a href="#cpc-comments">用户反馈</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="cpc-footer-bottom">
+        <span>© 2026 校园反差大赛 官方网站 · 版权所有 · 持续运营中</span>
+        <div class="cpc-filing">
+          <span>京ICP备2026008866号-1</span>
+          <span>京公网安备 11010802046821号</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button class="cpc-to-top" id="cpcToTop" aria-label="回到顶部" type="button">↑</button>
+
+  <!-- Toast -->
+  <div class="cpc-toast" id="cpcToast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* ---------- 通用 Toast ---------- */
+      var toastEl = document.getElementById("cpcToast");
+      var toastTimer = null;
+      function showToast(msg) {
+        if (!toastEl) return;
+        toastEl.textContent = msg;
+        toastEl.classList.add("cpc-show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toastEl.classList.remove("cpc-show");
+        }, 2200);
+      }
+
+      /* ---------- 1. 移动端导航折叠 ---------- */
+      var menuToggle = document.getElementById("cpcMenuToggle");
+      var primaryNav = document.getElementById("cpcPrimaryNav");
+      if (menuToggle && primaryNav) {
+        menuToggle.addEventListener("click", function () {
+          var opened = primaryNav.classList.toggle("cpc-open");
+          menuToggle.setAttribute("aria-expanded", opened ? "true" : "false");
+        });
+        primaryNav.addEventListener("click", function (e) {
+          if (e.target.tagName === "A") {
+            primaryNav.classList.remove("cpc-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      /* ---------- 2. 搜索框前端反馈 ---------- */
+      var searchInput = document.getElementById("cpcSearchInput");
+      var searchBtn = document.getElementById("cpcSearchBtn");
+      var searchFeedback = document.getElementById("cpcSearchFeedback");
+      var searchTimer = null;
+
+      var searchPool = [
+        "换位课堂", "乐队主唱", "食堂阿姨", "深夜缝纫机", "辩论赛前锋",
+        "图书馆打碟", "数学情书", "快递站美声", "考研合唱", "反差之声"
+      ];
+
+      function runSearch() {
+        if (!searchInput || !searchFeedback) return;
+        var kw = searchInput.value.trim();
+        if (!kw) {
+          searchFeedback.textContent = "输入关键词，试试“反差”“课堂”“音乐”";
+          searchFeedback.classList.add("cpc-show");
+          clearTimeout(searchTimer);
+          searchTimer = setTimeout(function () {
+            searchFeedback.classList.remove("cpc-show");
+          }, 2400);
+          return;
+        }
+        var hit = searchPool.filter(function (item) {
+          return item.indexOf(kw) !== -1 || kw.indexOf(item) !== -1;
+        });
+        if (hit.length > 0) {
+          searchFeedback.textContent = "找到 " + hit.length + " 组相关内容：" + hit.slice(0, 2).join("、") + "…";
+          showToast("已为你筛选「" + kw + "」相关作品");
+        } else {
+          searchFeedback.textContent = "暂无完全匹配，推荐看看「本期焦点内容」";
+          showToast("没有找到「" + kw + "」，换个词试试");
+        }
+        searchFeedback.classList.add("cpc-show");
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () {
+          searchFeedback.classList.remove("cpc-show");
+        }, 2800);
+      }
+
+      if (searchBtn) searchBtn.addEventListener("click", runSearch);
+      if (searchInput) {
+        searchInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") runSearch();
+        });
+      }
+
+      /* ---------- 3. 点赞 / 收藏切换 ---------- */
+      function parseNumber(text) {
+        var raw = (text || "").replace(/[^0-9.]/g, "");
+        var num = parseFloat(raw);
+        if (isNaN(num)) return null;
+        if (/万/.test(text)) return num * 10000;
+        return num;
+      }
+      function formatNumber(n) {
+        if (n >= 10000) return (n / 10000).toFixed(1).replace(/\.0$/, "") + "万";
+        if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "k";
+        return String(Math.round(n));
+      }
+
+      document.querySelectorAll("[data-cpc-like]").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          var isLiked = btn.classList.toggle("cpc-liked");
+          var original = btn.textContent.replace(/[\d.,]+[万k]?/g, function (m) { return m; });
+          var numText = btn.textContent.match(/[\d.,]+[万k]?/);
+          if (isLiked) {
+            var base = numText ? parseNumber(numText[0]) : 0;
+            btn.textContent = "👍 " + formatNumber(base + 1);
+            showToast("已点赞，感谢你的支持");
+          } else {
+            btn.textContent = "👍 已取消";
+            setTimeout(function () {
+              if (!btn.classList.contains("cpc-liked")) btn.textContent = "👍 点赞";
+            }, 1200);
+          }
+        });
+      });
+
+      document.querySelectorAll("[data-cpc-fav]").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          var on = btn.classList.toggle("cpc-faved");
+          btn.textContent = on ? "♥ 已收藏" : "♡ 收藏";
+          showToast(on ? "已加入收藏夹" : "已取消收藏");
+        });
+      });
+
+      /* ---------- 4. 复制链接 / 分享 ---------- */
+      document.querySelectorAll("[data-cpc-share]").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          var shareText = "校园反差大赛 · 记录每一个意想不到的青春瞬间";
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(shareText).then(function () {
+              showToast("分享文案已复制，去粘贴给朋友吧");
+            }).catch(function () {
+              showToast("分享提示：可复制当前页面地址给好友");
+            });
+          } else {
+            showToast("分享提示：可复制当前页面地址给好友");
+          }
+        });
+      });
+
+      var shareSiteBtn = document.getElementById("cpcShareSite");
+      if (shareSiteBtn) {
+        shareSiteBtn.addEventListener("click", function () {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText("校园反差大赛 官方网站 · 记录每一个意想不到的青春瞬间").then(function () {
+              showToast("分享文案已复制");
+            }).catch(function () {
+              showToast("分享提示：微信 / 微博 / QQ 均可分享本页");
+            });
+          } else {
+            showToast("分享提示：微信 / 微博 / QQ 均可分享本页");
+          }
+        });
+      }
+
+      /* ---------- 5. 投稿弹窗 / 入口 ---------- */
+      var submitBtns = [
+        document.getElementById("cpcSubmitBtn"),
+        document.getElementById("cpcSubmitBtn2")
+      ];
+      submitBtns.forEach(function (btn) {
+        if (!btn) return;
+        btn.addEventListener("click", function () {
+          showToast("投稿通道已开启：请在作品说明中注明「反差瞬间」");
+          var anchor = document.getElementById("cpc-contest");
+          if (anchor) {
+            anchor.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      /* ---------- 6. 作者信息提示 ---------- */
+      document.querySelectorAll("[data-cpc-author]").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          var card = btn.closest(".cpc-author-card");
+          var name = card ? card.querySelector(".cpc-author-name") : null;
+          var field = card ? card.querySelector(".cpc-author-field") : null;
+          if (name) {
+            showToast("正在查看 " + name.textContent + " 的创作者档案 · " + (field ? field.textContent : ""));
+          }
+        });
+      });
+
+      /* ---------- 7. 评论按钮 ---------- */
+      var commentBtn = document.getElementById("cpcCommentBtn");
+      if (commentBtn) {
+        commentBtn.addEventListener("click", function () {
+          showToast("评论入口已准备，登录后即可发表你的看法");
+        });
+      }
+
+      /* ---------- 8. 回到顶部 + 滚动显隐 ---------- */
+      var toTop = document.getElementById("cpcToTop");
+      if (toTop) {
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 420) {
+            toTop.classList.add("cpc-visible");
+          } else {
+            toTop.classList.remove("cpc-visible");
+          }
+        }, { passive: true });
+        toTop.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      /* ---------- 9. 卡片/榜单数字出现动效（轻量） ---------- */
+      var statValues = document.querySelectorAll(".cpc-stat-value");
+      if ("IntersectionObserver" in window) {
+        var statObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("cpc-anim-up");
+              statObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.4 });
+        statValues.forEach(function (el) { statObserver.observe(el); });
+      }
+
+      /* ---------- 10. FAQ 打开互斥优化 ---------- */
+      document.querySelectorAll(".cpc-faq-item").forEach(function (item) {
+        item.addEventListener("toggle", function () {
+          if (item.open) {
+            document.querySelectorAll(".cpc-faq-item").forEach(function (other) {
+              if (other !== item) other.open = false;
+            });
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+                  </html>
